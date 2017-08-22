@@ -14,8 +14,8 @@ viewing or using this software in any capacity.
 from __future__ import (
     absolute_import, division, print_function, unicode_literals,
 )
-from builtins import *  # noqa: F401,F403; pylint: disable=redefined-builtin,unused-wildcard-import,useless-suppression,wildcard-import
-from future.builtins.disabled import *  # noqa: F401,F403; pylint: disable=redefined-builtin,unused-wildcard-import,useless-suppression,wildcard-import
+from builtins import *  # noqa: F401,F403; pylint: disable=redefined-builtin,unused-wildcard-import,useless-suppression,wildcard-import,no-name-in-module
+from future.builtins.disabled import *  # noqa: F401,F403; pylint: disable=redefined-builtin,unused-wildcard-import,useless-suppression,wildcard-import,no-name-in-module
 
 # ---- Imports -----------------------------------------------------------
 
@@ -62,7 +62,7 @@ from sys import (
     stdout,
 )
 from tarfile import open as tarfile_open
-from docker import AutoVersionClient
+from docker import DockerClient
 from docker.utils import kwargs_from_env
 from humanize import naturalsize
 from dimgx import (
@@ -264,7 +264,7 @@ def main():
     if DOCKER_TLS_VERIFY == '0':
         dc_kw['tls'].assert_hostname = False
 
-    dc = AutoVersionClient(**dc_kw)
+    dc = DockerClient(**dc_kw)
     layers_dict = inspectlayers(dc, args.image)
     top_most_layer_id, selected_layers = selectlayers(args, layers_dict)
 

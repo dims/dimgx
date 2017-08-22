@@ -44,7 +44,7 @@ __all__ = ()
 _MY_DIR = dirname(getframeinfo(currentframe()).filename)
 
 INSTALL_REQUIRES = (
-    'docker-py',
+    'docker',
     'future',
     'humanize',
     'python-dateutil',
